@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Registration</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+        <div th:text="${q.id}" />
+        <div th:text="${q.topic}" />
+        <div th:text="${q.content}" />
+        <div th:text="${q.status}" />
+        <!-- <form action="@{${'/answer-question/' + ${question.id}}">
+          <button type="submit">Answer</button>
+        </form> -->
+      </br>
+      </br>
+        <!-- <form action="@{${'/answer-question/' + ${question.id}}">
+          <button type="submit">Answer</button>
+        </form> -->
+      </br>
+      </br>
+
+      <div th:text="${ans.id}"></div>
+        <div th:text="${ans.content}"></div>
+        <form method="POST" th:action="@{/logout}">
+          <input type="submit" value="Logout"/>
+          </form>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form th:action="@{${'/add-admin/'}}" method="GET">
+    <button type="submit">add admin</button>
+  </form>
+  <p>Reported Questions:</p>
+  <div  th:each="reportedQues: ${reportedQues}">
+    <div th:text="${reportedQues.id}"></div>
+    </br>
+    <!-- <div th:text="${answer.reporter}"></div> -->
+    </br>
+    <div th:text="${reportedQues.question}"></div>
+    </br>
+    <!-- <td th:text="${answer.status}" />
+        <div th:if="${currentlyLoggedInUser.id} == ${answer.user.id}"> -->
+    <form th:action="@{${'/ques-dismiss-report/' + reportedQues.id}}" method="POST">
+      <button type="submit" class="btn btn-primary">Dismiss</button>
+    </form>
+    <!-- <div th:if="${currentlyLoggedInUser.id} == ${answer.user.id}"> -->
+    <form th:action="@{${'/ques-resolve-report/' + reportedQues.id}}" method="POST">
+      <button type="submit" class="btn btn-primary">Resolve</button>
+    </form>
+    <!-- </div> -->
+    <!-- <form th:action="@{${'/answer-answer/' + answer.id}}">
+          <button type="submit">Answer</button>
+        </form>
+        <form th:action="@{${'/report-answer/' + answer.id}}">
+          <button type="submit">Report</button>
+        </form> -->
+
+    </br>
+    </br>
+  </div>
+  <p>Reported answers:</p>
+  <th:block  th:each="reportedAns: ${reportedAns}">
+    <div th:text="${reportedAns.id}"></div>
+    </br>
+    <!-- <div th:text="${answer.reporter}"></div> -->
+    </br>
+    <div th:text="${reportedAns.answer.content}"></div>
+    </br>
+    <!-- <td th:text="${answer.status}" />
+        <div th:if="${currentlyLoggedInUser.id} == ${answer.user.id}"> -->
+    <form th:action="@{${'/dismiss-report/' + reportedAns.id}}" method="POST">
+      <button type="submit" class="btn btn-primary">Dismiss</button>
+    </form>
+    <!-- <div th:if="${currentlyLoggedInUser.id} == ${answer.user.id}"> -->
+    <form th:action="@{${'/resolve-report/' + reportedAns.id}}" method="POST">
+      <button type="submit" class="btn btn-primary">Resolve</button>
+    </form>
+    <!-- </div> -->
+    <!-- <form th:action="@{${'/answer-answer/' + answer.id}}">
+          <button type="submit">Answer</button>
+        </form>
+        <form th:action="@{${'/report-answer/' + answer.id}}">
+          <button type="submit">Report</button>
+        </form> -->
+
+    </br>
+    </br>
+  </th:block>
+  <form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+    </form>
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
